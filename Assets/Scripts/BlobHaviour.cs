@@ -9,6 +9,8 @@ public class BlobHaviour : MonoBehaviour
     public bool isActive;
     public uint ownerNetworkID;
 
+    public Sprite lavaSet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class BlobHaviour : MonoBehaviour
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
         // change texture
-        GetComponent<SpriteRenderer>().color = Color.black;
+        GetComponent<SpriteRenderer>().sprite = lavaSet;
 
         Debug.Log("Blob set inactive");
     }

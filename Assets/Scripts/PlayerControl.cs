@@ -25,9 +25,13 @@ public class PlayerControl : NetworkBehaviour
     public bool alive = true;
     public static int playersAlive = 0;
 
+    private AudioSource[] lava = new AudioSource[2];
+
     // Start is called before the first frame update
     void Start()
     {
+        lava = GetComponents<AudioSource>();
+        lava[0].Pause();
         playersAlive += 1;
         if (isLocalPlayer)
         {
@@ -90,6 +94,7 @@ public class PlayerControl : NetworkBehaviour
         {
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
             SpawnBlob(Camera.main.ScreenToWorldPoint(mousePos), GetComponent<NetworkIdentity>().netId);
+            lava[0].Play();
         }
         // release mouse to deactivate blob
         if (Input.GetMouseButtonUp(0) && activeBlobID != 0)
@@ -97,6 +102,8 @@ public class PlayerControl : NetworkBehaviour
             cooldownTimer = blobCooldown;
             DeactivateBlob(activeBlobID);
             activeBlobID = 0;
+            lava[0].Stop();
+            lava[1].Play();
         }
     }
 
@@ -126,12 +133,15 @@ public class PlayerControl : NetworkBehaviour
     [Command]
     public void DeactivateBlob(uint targetBlobID)
     {
+        
         RpcOnBlobDeactivate(targetBlobID);
+        
     }
 
     [ClientRpc]
     void RpcOnBlobDeactivate(uint targetBlobID)
     {
+        
         NetworkIdentity targetNetID;
         bool success = NetworkIdentity.spawned.TryGetValue(targetBlobID, out targetNetID);
 
