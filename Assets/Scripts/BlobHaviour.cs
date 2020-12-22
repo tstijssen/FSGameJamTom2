@@ -7,7 +7,7 @@ public class BlobHaviour : MonoBehaviour
     public float growSpeed;
     public float maxSize;
     public bool isActive;
-    public PlayerControl owner;
+    public uint ownerNetworkID;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,7 @@ public class BlobHaviour : MonoBehaviour
     {
         if(isActive && other.TryGetComponent(out PlayerControl otherPlayer))
         {
-            otherPlayer.Kill(owner);
+            otherPlayer.Kill(ownerNetworkID);
         }
     }
 }

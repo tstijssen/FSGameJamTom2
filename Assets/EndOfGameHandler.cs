@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 
-public class EndOfGameHandler : MonoBehaviour
+public class EndOfGameHandler : NetworkBehaviour
 {
     public GameObject endGameStateUI;
 
@@ -86,7 +86,15 @@ public class EndOfGameHandler : MonoBehaviour
 
     public void ExitMatch()
     {
-        NetworkClient.Shutdown();
-        SceneManager.LoadScene(offlineScene);
+        if(isServer)
+        {
+            Debug.Log("STOPPING HOST");
+            NetworkRoomManager.singleton.StopHost();
+        }
+        else
+        {
+            Debug.Log("STOPPING CLIENT");
+            NetworkRoomManager.singleton.StopClient();
+        }
     }
 }

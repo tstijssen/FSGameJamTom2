@@ -68,7 +68,7 @@ public class PlayerControl : NetworkBehaviour
     {
         // movement for local active player
         if (!isLocalPlayer || !alive) return;
-
+        
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
 
@@ -105,7 +105,6 @@ public class PlayerControl : NetworkBehaviour
     private void SpawnBlob(Vector3 mousePos, uint ownerPlayerID)
     {
         GameObject newBlob = Instantiate(blobPrefab, mousePos, Quaternion.identity);
-        newBlob.GetComponent<BlobHaviour>().owner = this;
         NetworkServer.Spawn(newBlob);
         OnBlobSpawned(newBlob.GetComponent<NetworkIdentity>().netId, ownerPlayerID);
     }
@@ -115,8 +114,13 @@ public class PlayerControl : NetworkBehaviour
     {
         NetworkIdentity targetNetID;
         bool success = NetworkIdentity.spawned.TryGetValue(ownerPlayerID, out targetNetID);
+        if(success)
+            targetNetID.GetComponent<PlayerControl>().activeBlobID = newBlobID;
 
-        targetNetID.GetComponent<PlayerControl>().activeBlobID = newBlobID;
+        NetworkIdentity blobNetID;
+        success = NetworkIdentity.spawned.TryGetValue(newBlobID, out blobNetID);
+        if (success)
+            blobNetID.GetComponent<BlobHaviour>().ownerNetworkID = ownerPlayerID;
     }
 
     [Command]
@@ -135,18 +139,24 @@ public class PlayerControl : NetworkBehaviour
         targetBlob.DeActivate();
     }
 
-    public void Kill(PlayerControl killer)
+    public void Kill(uint killer)
     {
         string killerName = "";
+        uint ourID = GetComponent<NetworkIdentity>().netId;
+
         // who killed this player?
-        if (killer == this)
+        if (killer == ourID)
         {
             killerName = name;
             Debug.Log(name + " killed themselves!");
         }
         else
         {
-            killerName = killer.name;
+            NetworkIdentity targetNetID;
+            bool success = NetworkIdentity.spawned.TryGetValue(killer, out targetNetID);
+            if (success)
+                killerName = targetNetID.gameObject.name;
+
             Debug.Log(name + " killed by " + killerName + "!");
         }
 
