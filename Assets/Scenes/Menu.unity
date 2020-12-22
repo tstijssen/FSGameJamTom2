@@ -2012,7 +2012,7 @@ MonoBehaviour:
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 729069573620659812, guid: d066f79162e97d9468c81d6153e2f362, type: 3}
-  showRoomGUI: 1
+  showRoomGUI: 0
   minPlayers: 1
   roomPlayerPrefab: {fileID: 120725412226186624, guid: af7c03a7fb28bf64db954e58bf78db7c,
     type: 3}
