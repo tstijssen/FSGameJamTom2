@@ -455,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637957294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 779241015}
@@ -497,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779241014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637957295}
@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072203551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: -1, z: 0}
+  m_LocalPosition: {x: 6.98, y: -1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 779241015}
@@ -844,7 +844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275749117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: -1, z: 0}
+  m_LocalPosition: {x: -7.1, y: -1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 779241015}
@@ -1037,6 +1037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679745549}
   - component: {fileID: 1679745548}
+  - component: {fileID: 1679745547}
   m_Layer: 0
   m_Name: ArenaWalls
   m_TagString: Untagged
@@ -1044,8 +1045,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!68 &1679745548
-EdgeCollider2D:
+--- !u!50 &1679745547
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679745546}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!70 &1679745548
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1057,32 +1079,9 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -3.5695078, y: 3.71572}
-  - {x: 4.793503, y: 3.733517}
-  - {x: 6.7398634, y: 3.260089}
-  - {x: 8.27706, y: 2.3455722}
-  - {x: 9.152119, y: 1.2495137}
-  - {x: 9.473929, y: -0.017440796}
-  - {x: 9.149772, y: -1.3806617}
-  - {x: 8.013195, y: -2.761879}
-  - {x: 5.9995937, y: -3.5881019}
-  - {x: 4.683466, y: -3.8384137}
-  - {x: -3.2469225, y: -3.8319845}
-  - {x: -4.7276626, y: -3.6431446}
-  - {x: -6.542897, y: -2.7977183}
-  - {x: -7.7678795, y: -1.4413031}
-  - {x: -8.165528, y: 0.15686095}
-  - {x: -7.6355724, y: 1.5469134}
-  - {x: -6.3763423, y: 2.7420714}
-  - {x: -5.197491, y: 3.3777988}
-  - {x: -3.5549805, y: 3.7318752}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Offset: {x: 0.65523154, y: -0.016569695}
+  m_Size: {x: 17.548462, y: 7.693286}
+  m_Direction: 1
 --- !u!4 &1679745549
 Transform:
   m_ObjectHideFlags: 0
@@ -1091,8 +1090,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679745546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43203706, y: -0.14627327, z: -65.75087}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.50411, y: -0.14445, z: -65.75087}
+  m_LocalScale: {x: 1.11, y: 1.11, z: 1.11}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1122,7 +1121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729467502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 779241015}
