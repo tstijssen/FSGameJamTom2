@@ -7,8 +7,6 @@ public class ButtonList : MonoBehaviour
 {
     public Button b_Start;
     public Button b_Exit;
-    public Button b_Host;
-    public Button b_Join;
     public Button b_Back;
     public Button b_Settings;
     public Button b_Credits;
@@ -20,7 +18,7 @@ public class ButtonList : MonoBehaviour
     void Start()
     {
         b_Start.onClick.AddListener(GoToHostJoin);
-        b_Start.onClick.AddListener(QuitGame);
+        b_Exit.onClick.AddListener(QuitGame);
         b_Back.onClick.AddListener(BackToTitle);
     }
 
