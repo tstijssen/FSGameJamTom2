@@ -27,6 +27,7 @@ public class PlayerControl : NetworkBehaviour
 
     private AudioSource[] lava = new AudioSource[2];
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,9 +79,11 @@ public class PlayerControl : NetworkBehaviour
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
+        
         transform.Translate(movement * pSpeed * Time.deltaTime);
+            
 
-        if(cooldownTimer > 0.0f)
+        if (cooldownTimer > 0.0f)
         {
             cooldownTimer -= Time.deltaTime;
         }
