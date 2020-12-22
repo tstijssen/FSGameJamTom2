@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 729069573620659812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 25256dc08caf4e24485c0ea7222115af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9daaa855f927189419a017e624edf62e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e25b31bb069f024ca925e713ae2b54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growSpeed: 1
-  maxSize: 4
+  growSpeed: 0.5
+  maxSize: 1
   isActive: 1
-  owner: {fileID: 0}
+  ownerNetworkID: 0
+  lavaSet: {fileID: 21300000, guid: d44aea990f2eea943ba1bfa3ac8060b4, type: 3}
 --- !u!58 &-8581800986051231658
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.5
 --- !u!50 &5989125220545359936
 Rigidbody2D:
   serializedVersion: 4
